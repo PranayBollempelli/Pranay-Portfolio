@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.menu-elements {
+  @apply text-text_primary hover:text-black font-medium cursor-pointer;
+}
+
+.main-container {
+  @apply bg-primary px-7 md:px-32 mt-20 mb-20;
+}
+
+.main_button {
+  @apply border-secondary border-[1px] text-sm mr-4 py-1 px-4 rounded-2xl shadow-lg cursor-pointer transition-colors ease-in-out duration-300 hover:text-white hover:bg-secondary;
+}
+
+.secondary_button {
+  @apply border-gray-300 border-[1px] text-sm mr-4 py-1 px-4 rounded-2xl shadow-lg cursor-pointer transition-colors ease-in-out duration-300 hover:bg-gray-300;
+}
+
+.input_box {
+  @apply border-2 border-gray-300 px-3 h-10 w-full rounded-md outline-none focus:border-green-500 cursor-pointer;
+}
+
+.input_box_textarea {
+  @apply border-2 border-gray-300 px-3 py-3 h-40 w-full rounded-md outline-none focus:border-green-500 cursor-pointer;
+}
