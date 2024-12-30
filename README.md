@@ -1,8 +1,53 @@
-# React + Vite
+# ✨ New Portfolio
+A modern and responsive portfolio website showcasing my skills, projects, and professional experience.
+---
+## 🚀 Getting Started
+Follow these steps to set up the project locally:
+### 🖇️ Clone the Repository
+```bash
+git clone [https://github.com/yourusername/new-portfolio.git](https://github.com/yourusername/new-portfolio.git)
+```
+### 📂 Navigate to the Project Directory
+```bash
+cd new-portfolio
+```
+### 📦 Install Dependencies
+```bash
+npm install
+```
+### 🏃‍♂️ Start the Development Server
+```bash
+npm start
+```
+### 🌐 Open your browser and navigate to http://localhost:3000 to view the portfolio.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### 🛠️ Components
+### 🔗 Navbar
+##  Handles navigation across different sections of the portfolio.
 
-Currently, two official plugins are available:
+### 🏠 Home
+The landing page of the portfolio.
+### 📝 Resume
+Displays your resume, including your skills and education.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 🖥️ Projects
+Showcases your projects.
+### 📑 ProjectDetails
+Provides detailed information about specific projects.
+
+### 📬 Contact
+Enables visitors to get in touch with you.
+
+### 🔀 Routes
+This portfolio uses react-router-dom for routing. The following routes are defined in App.jsx:
+- / : Home page
+- /resume : Resume page
+- /projects : Projects page
+- /contact : Contact page
+- /project : Project details page
+
+### 🤝 Feedback
+Have suggestions or feedback? Feel free to open an issue or reach out to me directly!
+
+### 📜 License
+This project is licensed under the MIT License. See the LICENSE file for details.
