@@ -37,7 +37,7 @@ function Home() {
         <div className="flex flex-col md:flex-row items-center my-5 mb-20">
           <div className="p-3 md:p-5 shadow-add_full mt-4 mb-8 rounded-full aspect-square h-60 w-60 md:h-80 md:w-80 md:mr-8">
             <img
-              src="src/assets/profile_image.jpg"
+              src="https://res.cloudinary.com/dcuemmcmb/image/upload/v1735557757/Portfolio%20images/profile_image_zkwhes.jpg"
               alt="profile"
               className="rounded-[50%] w-full h-full object-cover"
             />
