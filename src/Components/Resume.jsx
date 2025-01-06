@@ -51,34 +51,32 @@ const EducationSection = ({ education }) => (
 
 function Resume() {
   return (
-    <div className="container mx-auto">
-      <div className="main-container">
-        <h1 className="text-5xl font-bold mt-32 mb-1">Resume</h1>
-        <hr className="my-8 h-[2px] bg-gray-200" />
+    <section id="resume" className="main-container pt-10 scroll-mt-10">
+      <h1 className="text-5xl font-bold mb-1">Resume</h1>
+      <hr className="my-8 h-[2px] bg-gray-200" />
 
-        <AboutMe />
+      <AboutMe />
 
-        <div>
-          <h1 className="relative text-2xl font-semibold pb-1 inline-block py-8">
-            Education
-            <span className="absolute bottom-0 left-0 w-[30%] h-[2px] bg-green-500"></span>
-            <span className="absolute bottom-0 left-[30%] w-[70%] h-[2px] bg-gray-200"></span>
-          </h1>
-          <EducationSection education={Education} />
-        </div>
-
+      <div>
         <h1 className="relative text-2xl font-semibold pb-1 inline-block py-8">
-          Skills
+          Education
           <span className="absolute bottom-0 left-0 w-[30%] h-[2px] bg-green-500"></span>
           <span className="absolute bottom-0 left-[30%] w-[70%] h-[2px] bg-gray-200"></span>
         </h1>
-        <div className="gap-7 md:gap-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-          <SkillSection title="Frontend Development" skills={Frontend} />
-          <SkillSection title="Backend Development" skills={Backend} />
-          <SkillSection title="Tools & Version Control" skills={Tools} />
-        </div>
+        <EducationSection education={Education} />
       </div>
-    </div>
+
+      <h1 className="relative text-2xl font-semibold pb-1 inline-block py-8">
+        Skills
+        <span className="absolute bottom-0 left-0 w-[30%] h-[2px] bg-green-500"></span>
+        <span className="absolute bottom-0 left-[30%] w-[70%] h-[2px] bg-gray-200"></span>
+      </h1>
+      <div className="gap-7 md:gap-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <SkillSection title="Frontend Development" skills={Frontend} />
+        <SkillSection title="Backend Development" skills={Backend} />
+        <SkillSection title="Tools & Version Control" skills={Tools} />
+      </div>
+    </section>
   );
 }
 

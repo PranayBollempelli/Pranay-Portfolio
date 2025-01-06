@@ -7,7 +7,6 @@ function Portfolio() {
   // Function to open a project
   const openProject = (project) => {
     setSelectedProject(project);
-    console.log(project.name);
   };
 
   // Function to close the project details
@@ -16,29 +15,27 @@ function Portfolio() {
   };
 
   return (
-    <div className="container mx-auto">
-      <div className="main-container">
-        <h1 className="text-5xl font-bold mt-32 mb-1">Projects</h1>
-        <hr className="my-8 h-[2px] bg-gray-200" />
-        {/* Main Projects Container */}
-        <div className="grid gap-7 md:gap-14 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
-          {ProjectsList.map((project) => (
-            <div
-              key={project.id}
-              className="relative cursor-pointer overflow-hidden rounded-xl group shadow-2xl"
-              onClick={() => openProject(project)}
-            >
-              <img
-                src={project.image}
-                alt={project.name}
-                className="rounded-xl transition-transform duration-300 ease-in-out group-hover:scale-110"
-              />
-              <h2 className="absolute top-5 left-4 bg-green-500 text-white px-5 py-1 rounded-md text-xl font-semibold">
-                {project.name}
-              </h2>
-            </div>
-          ))}
-        </div>
+    <section id="projects" className="main-container pt-10 scroll-mt-10">
+      <h1 className="text-5xl font-bold mb-1">Projects</h1>
+      <hr className="my-8 h-[2px] bg-gray-200" />
+      {/* Main Projects Container */}
+      <div className="grid gap-7 md:gap-14 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
+        {ProjectsList.map((project) => (
+          <div
+            key={project.id}
+            className="relative cursor-pointer overflow-hidden rounded-xl group shadow-2xl"
+            onClick={() => openProject(project)}
+          >
+            <img
+              src={project.image}
+              alt={project.name}
+              className="rounded-xl transition-transform duration-300 ease-in-out group-hover:scale-110"
+            />
+            <h2 className="absolute top-5 left-4 bg-green-500 text-white px-5 py-1 rounded-md text-xl font-semibold">
+              {project.name}
+            </h2>
+          </div>
+        ))}
       </div>
 
       {/* Project Details Modal */}
@@ -103,7 +100,7 @@ function Portfolio() {
           </div>
         </div>
       )}
-    </div>
+    </section>
   );
 }
 

@@ -2,22 +2,22 @@ const NavItems = [
   {
     id: 1,
     name: "Home",
-    link: "/",
+    link: "#home",
   },
   {
     id: 2,
     name: "Resume",
-    link: "/resume",
+    link: "#resume",
   },
   {
     id: 3,
     name: "Projects",
-    link: "/projects",
+    link: "#projects",
   },
   {
     id: 4,
     name: "Contact",
-    link: "/contact",
+    link: "#contact",
   },
 ];
 
