@@ -1,59 +1,107 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-
 import NavItems from "../contexts/navLinks";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  const [activeSection, setActiveSection] = useState("home");
+
+  // Handle scroll and active section
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = NavItems.map((item) => item.link.replace("#", ""));
+      const current = sections.find((section) => {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          return rect.top <= 100 && rect.bottom >= 100;
+        }
+        return false;
+      });
+      if (current) setActiveSection(current);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <div className="container mx-auto">
-      <div className="h-20 px-5 md:px-14 shadow-md fixed top-0 left-0 w-full flex bg-white z-50 justify-between">
-        <div className="self-center cursor-pointer">
-          <a className="flex justify-center items-center" href="home">
-            <div className="bg-secondary mr-4 h-6 w-6 lg:h-12 lg:w-12 rounded-full flex justify-center items-center ">
-              <p className="text-white font-extrabold lg:text-4xl">P</p>
+    <nav className="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-sm z-50">
+      <div className="container mx-auto">
+        <div className="h-20 px-5 md:px-14 flex items-center justify-between">
+          {/* Logo */}
+          <a href="#home" className="group flex items-center gap-3">
+            <div className="bg-gradient-to-r from-secondary to-green-600 h-10 w-10 lg:h-12 lg:w-12 rounded-xl flex items-center justify-center transform rotate-12 group-hover:rotate-0 transition-all duration-300">
+              <p className="text-white font-bold text-xl lg:text-2xl">P</p>
             </div>
-            <h1 className="font-bold lg:text-2xl">Pranay</h1>
+            <h1 className="font-bold text-xl lg:text-2xl bg-gradient-to-r from-secondary to-green-600 bg-clip-text text-transparent">
+              Pranay
+            </h1>
           </a>
-        </div>
 
-        <div className="block lg:hidden self-center">
-          {isMenuOpen ? (
-            <CloseIcon onClick={toggleMenu} className="cursor-pointer" />
-          ) : (
-            <MenuIcon onClick={toggleMenu} className="cursor-pointer" />
-          )}
-        </div>
+          {/* Mobile Menu Button */}
+          <button
+            className="lg:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? <CloseIcon /> : <MenuIcon />}
+          </button>
 
-        <div className="hidden lg:flex lg:items-center lg:space-x-4 gap-14">
-          {NavItems.map((item) => (
-            <a href={item.link} key={item.id} className="menu-elements">
-              <p>{item.name}</p>
-            </a>
-          ))}
-        </div>
-
-        {isMenuOpen && (
-          <div className="lg:hidden absolute top-20 left-0 w-full bg-white shadow-md flex flex-col items-center space-y-4 py-4 z-40">
+          {/* Desktop Menu */}
+          <div className="hidden lg:flex items-center gap-8">
             {NavItems.map((item) => (
               <a
-                href={item.link}
                 key={item.id}
-                className="menu-elements"
-                onClick={toggleMenu}
+                href={item.link}
+                className={`relative px-2 py-1 text-sm font-medium transition-colors
+                  ${
+                    activeSection === item.link.replace("#", "")
+                      ? "text-secondary"
+                      : "text-gray-600 hover:text-secondary"
+                  }`}
               >
-                <p>{item.name}</p>
+                {item.name}
+                <span
+                  className={`absolute bottom-0 left-0 w-full h-0.5 bg-secondary transform origin-left transition-transform duration-300
+                  ${
+                    activeSection === item.link.replace("#", "")
+                      ? "scale-x-100"
+                      : "scale-x-0"
+                  }`}
+                />
               </a>
             ))}
           </div>
-        )}
+
+          {/* Mobile Menu */}
+          <div
+            className={`lg:hidden fixed inset-0 top-20 bg-white/95 backdrop-blur-sm transform transition-transform duration-300 
+            ${isMenuOpen ? "translate-x-0" : "translate-x-full"}`}
+          >
+            <div className="container mx-auto px-5 py-8">
+              <div className="flex flex-col items-center gap-6">
+                {NavItems.map((item) => (
+                  <a
+                    key={item.id}
+                    href={item.link}
+                    onClick={() => setIsMenuOpen(false)}
+                    className={`text-lg font-medium transition-colors
+                      ${
+                        activeSection === item.link.replace("#", "")
+                          ? "text-secondary"
+                          : "text-gray-600"
+                      }`}
+                  >
+                    {item.name}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    </nav>
   );
 }
 

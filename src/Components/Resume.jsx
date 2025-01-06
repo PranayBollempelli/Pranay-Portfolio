@@ -2,21 +2,69 @@ import { Frontend, Backend, Tools } from "../contexts/skills";
 import AboutMe from "./About";
 import Education from "../contexts/educationList";
 
-const SkillSection = ({ title, skills }) => (
-  <div className="p-4 bg-white shadow-lg rounded-lg">
-    <h1 className="text-2xl font-semibold mb-4 text-green-500">{title}</h1>
-    <div className="space-y-4">
+function Resume() {
+  return (
+    <section id="resume" className="main-container scroll-mt-20">
+      {/* Modern Header */}
+      <div className="text-center mb-16 space-y-4">
+        <h1 className="text-5xl font-bold bg-gradient-to-r from-secondary to-green-600 bg-clip-text text-transparent">
+          Resume
+        </h1>
+        <div className="w-24 h-1 bg-gradient-to-r from-secondary to-green-600 mx-auto rounded-full" />
+      </div>
+
+      {/* About Section with Card */}
+      <div className="bg-white rounded-xl shadow-lg p-8 mb-16 transform transition-all duration-300 hover:shadow-xl">
+        <AboutMe />
+      </div>
+
+      {/* Education Section */}
+      <div className="mb-16">
+        <h2 className="text-3xl font-bold mb-8 relative inline-block">
+          Education
+          <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-secondary to-green-600 rounded-full" />
+        </h2>
+        <div className="bg-white rounded-xl shadow-lg p-8 transform transition-all duration-300 hover:shadow-xl">
+          <EducationSection education={Education} />
+        </div>
+      </div>
+
+      {/* Skills Section */}
+      <div>
+        <h2 className="text-3xl font-bold mb-8 relative inline-block">
+          Skills
+          <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-secondary to-green-600 rounded-full" />
+        </h2>
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <SkillCard title="Frontend Development" skills={Frontend} />
+          <SkillCard title="Backend Development" skills={Backend} />
+          <SkillCard title="Tools & Version Control" skills={Tools} />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// Enhanced Skill Card Component
+const SkillCard = ({ title, skills }) => (
+  <div className="bg-white rounded-xl shadow-lg p-6 transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+    <h3 className="text-xl font-semibold mb-6 text-secondary">{title}</h3>
+    <div className="space-y-6">
       {skills.map((skill, index) => (
-        <div key={index} className="flex items-center">
-          <span className="text-md font-medium w-1/3">{skill.name}</span>
-          <div className="w-2/3 bg-gray-200 rounded-full h-2 relative">
-            <div
-              className="bg-green-500 h-2 rounded-full"
-              style={{ width: `${skill.percentage}%` }}
-            ></div>
-            <span className="absolute right-0 text-xs font-semibold text-green-500 pr-2">
+        <div key={index} className="space-y-2">
+          <div className="flex justify-between items-center">
+            <span className="text-sm font-medium text-gray-600">
+              {skill.name}
+            </span>
+            <span className="text-sm font-semibold text-secondary">
               {skill.percentage}%
             </span>
+          </div>
+          <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+            <div
+              className="h-full bg-gradient-to-r from-secondary to-green-600 rounded-full transition-all duration-500 ease-out"
+              style={{ width: `${skill.percentage}%` }}
+            />
           </div>
         </div>
       ))}
@@ -24,60 +72,30 @@ const SkillSection = ({ title, skills }) => (
   </div>
 );
 
+// Enhanced Education Timeline Component
 const EducationSection = ({ education }) => (
-  <div className="px-3 mx-auto py-8">
-    <section>
-      <div className="relative border-l-2 border-gray-300 pl-8">
-        {education.map((item, index) => (
-          <div key={index} className="mb-8 relative">
-            <div className="absolute -left-10 top-0 bg-white text-black border-2 border-green-500 font-bold w-20 h-8 flex items-center justify-center rounded-md shadow-lg">
-              <span className="text-xs">{item.year}</span>
-            </div>
-            <div className="ml-16">
-              <h3 className="text-lg font-bold text-gray-800">{item.name}</h3>
-              {item.degree && (
-                <h4 className="text-md font-semibold text-gray-600">
-                  {item.degree}
-                </h4>
-              )}
-              <h4 className="text-sm text-gray-500">{item.course}</h4>
-            </div>
-          </div>
-        ))}
+  <div className="space-y-8">
+    {education.map((item, index) => (
+      <div
+        key={index}
+        className="relative pl-8 pb-8 border-l-2 border-gray-200 last:pb-0"
+      >
+        <div className="absolute left-[-9px] top-0 w-4 h-4 rounded-full bg-secondary border-4 border-white" />
+        <div className="bg-gray-50 rounded-lg p-4 transform transition-all duration-300 hover:-translate-x-1">
+          <span className="inline-block px-3 py-1 mb-4 text-sm font-medium text-secondary bg-green-50 rounded-full">
+            {item.year}
+          </span>
+          <h3 className="text-lg font-bold text-gray-800">{item.name}</h3>
+          {item.degree && (
+            <h4 className="text-md font-semibold text-gray-600">
+              {item.degree}
+            </h4>
+          )}
+          <p className="text-sm text-gray-500 mt-1">{item.course}</p>
+        </div>
       </div>
-    </section>
+    ))}
   </div>
 );
-
-function Resume() {
-  return (
-    <section id="resume" className="main-container pt-10 scroll-mt-10">
-      <h1 className="text-5xl font-bold mb-1">Resume</h1>
-      <hr className="my-8 h-[2px] bg-gray-200" />
-
-      <AboutMe />
-
-      <div>
-        <h1 className="relative text-2xl font-semibold pb-1 inline-block py-8">
-          Education
-          <span className="absolute bottom-0 left-0 w-[30%] h-[2px] bg-green-500"></span>
-          <span className="absolute bottom-0 left-[30%] w-[70%] h-[2px] bg-gray-200"></span>
-        </h1>
-        <EducationSection education={Education} />
-      </div>
-
-      <h1 className="relative text-2xl font-semibold pb-1 inline-block py-8">
-        Skills
-        <span className="absolute bottom-0 left-0 w-[30%] h-[2px] bg-green-500"></span>
-        <span className="absolute bottom-0 left-[30%] w-[70%] h-[2px] bg-gray-200"></span>
-      </h1>
-      <div className="gap-7 md:gap-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        <SkillSection title="Frontend Development" skills={Frontend} />
-        <SkillSection title="Backend Development" skills={Backend} />
-        <SkillSection title="Tools & Version Control" skills={Tools} />
-      </div>
-    </section>
-  );
-}
 
 export default Resume;

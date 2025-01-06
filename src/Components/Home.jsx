@@ -1,58 +1,39 @@
-import DevicesIcon from "@mui/icons-material/Devices";
-import StorageIcon from "@mui/icons-material/Storage";
-import CodeOffIcon from "@mui/icons-material/CodeOff";
 import Resume from "../../public/resume/PranayBollempelli_Resume.pdf";
-
-const WhatIDoList = [
-  {
-    id: 1,
-    title: "JavaScript Mastery",
-    description:
-      "Building dynamic and interactive web applications with modern JavaScript frameworks.",
-    icon: CodeOffIcon,
-  },
-  {
-    id: 2,
-    title: "Responsive Design",
-    description:
-      "Ensuring optimal performance and user experience across all devices.",
-    icon: DevicesIcon,
-  },
-  {
-    id: 3,
-    title: "Backend Development",
-    description: "Developing robust server-side logic and APIs.",
-    icon: StorageIcon,
-  },
-];
+import { WhatIDoList } from "../contexts/whatIDo";
+import { socialLinks } from "../contexts/socialLinks";
 
 function Home() {
   const whatIDo = (WhatIDoList) => {
     return (
-      <div className="mt-10">
-        <h1 className="relative text-2xl font-semibold inline-block pb-1">
+      <div className="mt-20">
+        <h2 className="relative text-3xl font-bold inline-block pb-2 bg-gradient-to-r from-secondary to-green-600 bg-clip-text text-transparent">
           What I Do
-          <span className="absolute bottom-0 left-0 w-[30%] h-[2px] bg-green-500"></span>
-          <span className="absolute bottom-0 left-[30%] w-[70%] h-[2px] bg-gray-200"></span>
-        </h1>
+          <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-secondary to-green-600 rounded-full" />
+        </h2>
 
-        <div className="mt-5 grid gap-5 lg:gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {WhatIDoList.map((item) => {
             const IconComponent = item.icon;
             return (
               <div
-                className="flex bg-white shadow-lg p-3 rounded-lg"
                 key={item.id}
+                className="group bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
               >
-                <IconComponent
-                  className="text-icon_color mr-4 mt-[1px]"
-                  style={{ fontSize: 30 }}
-                />
-                <div>
-                  <h1 className="text-[17px] font-medium">{item.title}</h1>
-                  <p className="text-gray-400 text-sm font-medium">
-                    {item.description}
-                  </p>
+                <div className="flex items-start space-x-4">
+                  <div className="p-3 bg-gray-50 rounded-lg group-hover:bg-secondary/10 transition-colors duration-300">
+                    <IconComponent
+                      className="text-secondary transform group-hover:scale-110 transition-transform duration-300"
+                      style={{ fontSize: 32 }}
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <h3 className="text-lg font-semibold text-gray-800 group-hover:text-secondary transition-colors duration-300">
+                      {item.title}
+                    </h3>
+                    <p className="text-gray-600 text-sm leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
                 </div>
               </div>
             );
@@ -63,47 +44,99 @@ function Home() {
   };
 
   return (
-    <div className="main-container mx-auto min-h-screen" id="home">
-      {/* Profile Section - Centered */}
-      <div className="min-h-[90vh] flex items-center justify-center">
-        <div className="flex flex-col md:flex-row items-center gap-8 md:gap-20 max-w-6xl">
-          <div className="p-3 md:p-4 shadow-add_full rounded-full aspect-square h-60 w-60 md:h-80 md:w-80">
-            <img
-              src="https://res.cloudinary.com/dcuemmcmb/image/upload/v1735557757/Portfolio%20images/profile_image_zkwhes.jpg"
-              alt="profile"
-              className="rounded-[50%] w-full h-full object-cover"
-            />
+    <div className="main-container min-h-screen bg-gray-50" id="home">
+      <div className="min-h-[90vh] flex items-center justify-center px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col-reverse md:flex-row items-center gap-8 sm:gap-12 md:gap-16 lg:gap-20 max-w-6xl mx-auto">
+          {/* Content */}
+          <div className="text-center md:text-start w-full max-w-xl">
+            <div className="space-y-4 sm:space-y-6">
+              {/* Header */}
+              <div className="space-y-2 sm:space-y-3">
+                <span className="text-secondary font-medium text-xs sm:text-sm md:text-base tracking-wider uppercase">
+                  Full Stack Developer [MERN Stack]
+                </span>
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900">
+                  PRANAY
+                  <span className="text-gray-400"> BOLLEMPELLI</span>
+                </h1>
+                <p className="text-sm sm:text-base md:text-lg text-gray-600 leading-relaxed max-w-lg">
+                  Building modern web applications with clean code and
+                  thoughtful design.
+                </p>
+              </div>
+              {/* Buttons */}
+              <div className="flex gap-3 justify-center md:justify-start">
+                <a
+                  href={Resume}
+                  download
+                  className="px-3 sm:px-4 py-1.5 text-xs sm:text-sm font-medium 
+      bg-gradient-to-r from-secondary to-green-600 text-white rounded
+      shadow-sm hover:shadow-md shadow-secondary/10
+      transform hover:-translate-y-0.5 active:translate-y-0
+      transition-all duration-300"
+                >
+                  Download CV
+                </a>
+                <a
+                  href="#contact"
+                  className="px-3 sm:px-4 py-1.5 text-xs sm:text-sm font-medium
+      border border-gray-200 text-gray-600 rounded
+      hover:border-secondary hover:text-secondary
+      hover:shadow-sm hover:shadow-secondary/5
+      transform hover:-translate-y-0.5 active:translate-y-0
+      transition-all duration-300 bg-white/50"
+                >
+                  Contact
+                </a>
+              </div>
+
+              {/* Social Links */}
+              <div className="flex gap-3 sm:gap-4 justify-center md:justify-start">
+                {socialLinks.map((item) => (
+                  <a
+                    key={item.id}
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2 text-gray-400 hover:text-secondary transition-colors"
+                  >
+                    <item.icon className="w-4 h-4 sm:w-5 sm:h-5" />
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
-          <div className="text-center md:text-start max-w-xl">
-            <p className="text-text_secondary font-semibold md:text-xl">
-              Full Stack Developer{" "}
-              <span className="font-medium">(MERN stack)</span>
-            </p>
-            <h1 className="text-heading_color text-3xl font-semibold mt-2 md:text-5xl">
-              PRANAY BOLLEMPELLI
-            </h1>
-            <p className="text-left mt-4 mb-8 text-gray-400 text-sm font-medium">
-              Full Stack Developer crafting responsive, scalable web
-              applications with clean code and user-focused design.
-            </p>
-            <div className="flex gap-4 justify-center md:justify-start">
-              <a
-                href={Resume}
-                download="PranayBollempelli_Resume.pdf"
-                className="main_button"
-              >
-                Download CV
-              </a>
-              <button className="secondary_button">
-                <a href="#contact">Contact Me</a>
-              </button>
+
+          {/* Enhanced Profile Image */}
+          <div className="relative group animate-float">
+            {/* Glow Effect */}
+            <div className="absolute inset-0 bg-gradient-to-r from-secondary/20 to-green-400/20 rounded-full blur-2xl group-hover:blur-3xl transition-all duration-500" />
+
+            {/* Decorative Ring */}
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-secondary to-green-400 rounded-full opacity-20 group-hover:opacity-30 blur-sm transition-opacity duration-500" />
+
+            {/* Main Image Container */}
+            <div className="relative w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-72 lg:h-72 xl:w-80 xl:h-80">
+              <div className="w-full h-full rounded-full overflow-hidden bg-white ring-2 ring-white/80 ring-offset-2 ring-offset-gray-100 shadow-lg transition-transform duration-500 group-hover:scale-[1.02]">
+                <img
+                  src="https://res.cloudinary.com/dcuemmcmb/image/upload/v1735557757/Portfolio%20images/profile_image_zkwhes.jpg"
+                  alt="profile"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+              </div>
+
+              {/* Decorative Dots */}
+              <div className="absolute -right-2 top-1/4 flex flex-col gap-1">
+                <div className="w-1 h-1 rounded-full bg-secondary/50"></div>
+                <div className="w-1 h-1 rounded-full bg-secondary/50"></div>
+                <div className="w-1 h-1 rounded-full bg-secondary/50"></div>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* What I Do */}
-      <div className="mt-20">{whatIDo(WhatIDoList)}</div>
+      {whatIDo(WhatIDoList)}
     </div>
   );
 }

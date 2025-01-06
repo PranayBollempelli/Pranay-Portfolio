@@ -20,72 +20,87 @@ const ContactList = [
 
 function Contact() {
   return (
-    <section id="contact" className="main-container pt-10 scroll-mt-10">
-      <h1 className="text-5xl font-bold mb-1">Contact</h1>
-      <p className=" text-gray-400 text-sm font-medium ">Get in Touch</p>
-      <hr className="my-8 h-[2px] bg-gray-200" />
-      {/* Email  and Linkedin */}
-      <div className="md:flex">
-        <div className="grid md:flex md:flex-col md:w-[30%] md:mr-5 gap-5 mb-10">
+    <section id="contact" className="main-container  scroll-mt-20">
+      {/* Header */}
+      <div className="text-center mb-16 space-y-4">
+        <h1 className="text-5xl font-bold bg-gradient-to-r from-secondary to-green-600 bg-clip-text text-transparent">
+          Contact
+        </h1>
+        <p className="text-gray-600 max-w-2xl mx-auto">
+          Let's connect and discuss your project
+        </p>
+        <div className="w-24 h-1 bg-gradient-to-r from-secondary to-green-600 mx-auto rounded-full" />
+      </div>
+
+      <div className="grid md:grid-cols-3 gap-8">
+        {/* Contact Info Cards */}
+        <div className="md:col-span-1 space-y-6">
           {ContactList.map((item) => {
             const IconComponent = item.icon;
             return (
-              <div className="flex" key={item.id}>
-                <IconComponent
-                  className="text-icon_color mr-4 mt-[1px]"
-                  style={{ fontSize: 30 }}
-                />
-                <div>
-                  <h1 className="text-[17px] font-medium">{item.name}</h1>
-                  <p className="text-gray-400 text-sm font-medium">
-                    {item.description}
-                  </p>
+              <div
+                key={item.id}
+                className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+              >
+                <div className="flex items-start space-x-4">
+                  <div className="p-3 bg-green-50 rounded-lg">
+                    <IconComponent
+                      className="text-secondary"
+                      style={{ fontSize: 24 }}
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <h3 className="font-semibold text-gray-800">{item.name}</h3>
+                    <p className="text-gray-600 text-sm">{item.description}</p>
+                  </div>
                 </div>
               </div>
             );
           })}
         </div>
-        {/* Help You */}
-        <div>
-          <h1 className="relative text-2xl font-semibold pb-1 inline-block">
-            How Can I Help You?
-            <span className="absolute bottom-0 left-0 w-[30%] h-[2px] bg-green-500"></span>
-            <span className="absolute bottom-0 left-[30%] w-[70%] h-[2px] bg-gray-200"></span>
-          </h1>
 
-          {/* Form Container */}
-          <div>
-            <form className="my-6">
-              <div className="grid md:grid-cols-2 gap-5">
-                {/* Left column: Full Name, Email, Subject */}
-                <div className="space-y-5">
+        {/* Contact Form */}
+        <div className="md:col-span-2">
+          <div className="bg-white p-8 rounded-xl shadow-lg">
+            <form className="space-y-6">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Name
+                  </label>
                   <input
                     type="text"
-                    className="input_box"
-                    placeholder="Full Name"
+                    className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all duration-300"
+                    placeholder="Your Name"
                   />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Email
+                  </label>
                   <input
                     type="email"
-                    className="input_box"
-                    placeholder="Email Address"
+                    className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all duration-300"
+                    placeholder="your@email.com"
                   />
-                  <input
-                    type="text"
-                    className="input_box"
-                    placeholder="Subject"
-                  />
-                </div>
-
-                {/* Right column: Textarea */}
-                <div>
-                  <textarea
-                    className="input_box_textarea w-full"
-                    rows={7}
-                    placeholder="Message"
-                  ></textarea>
                 </div>
               </div>
-              <button className="main_button mt-5">Send message</button>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Message
+                </label>
+                <textarea
+                  rows="5"
+                  className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all duration-300 resize-none"
+                  placeholder="Your message..."
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                className="w-full bg-gradient-to-r from-secondary to-green-600 text-white font-medium py-3 rounded-lg hover:opacity-90 transition-opacity duration-300"
+              >
+                Send Message
+              </button>
             </form>
           </div>
         </div>
