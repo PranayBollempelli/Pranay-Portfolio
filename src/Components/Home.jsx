@@ -1,36 +1,45 @@
-import Resume from "../../public/resume/PranayBollempelli_Resume.pdf";
+import Resume from "../../public/resume/Resume.pdf";
 import { WhatIDoList } from "../contexts/whatIDo";
 import { socialLinks } from "../contexts/socialLinks";
 
 function Home() {
   const whatIDo = (WhatIDoList) => {
     return (
-      <div className="mt-20">
-        <h2 className="relative text-3xl font-bold inline-block pb-2 bg-gradient-to-r from-secondary to-green-600 bg-clip-text text-transparent">
+      <div className="mt-16 sm:mt-20">
+        {/* Section Header */}
+        <h2 className="relative text-2xl sm:text-3xl font-bold inline-block pb-2 bg-gradient-to-r from-secondary to-green-600 bg-clip-text text-transparent">
           What I Do
           <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-secondary to-green-600 rounded-full" />
         </h2>
 
-        <div className="mt-10 grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        {/* Cards Grid */}
+        <div className="mt-8 sm:mt-10 grid gap-6 sm:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {WhatIDoList.map((item) => {
             const IconComponent = item.icon;
             return (
               <div
                 key={item.id}
-                className="group bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+                className="group bg-white p-4 sm:p-6 rounded-xl shadow-md hover:shadow-lg 
+                  transition-all duration-300 transform hover:-translate-y-1"
               >
                 <div className="flex items-start space-x-4">
-                  <div className="p-3 bg-gray-50 rounded-lg group-hover:bg-secondary/10 transition-colors duration-300">
+                  <div
+                    className="p-2.5 sm:p-3 bg-gray-50 rounded-lg 
+                    group-hover:bg-secondary/10 transition-colors duration-300"
+                  >
                     <IconComponent
-                      className="text-secondary transform group-hover:scale-110 transition-transform duration-300"
-                      style={{ fontSize: 32 }}
+                      className="text-secondary transform group-hover:scale-110 
+                        transition-transform duration-300 w-6 h-6 sm:w-7 sm:h-7"
                     />
                   </div>
                   <div className="space-y-2">
-                    <h3 className="text-lg font-semibold text-gray-800 group-hover:text-secondary transition-colors duration-300">
+                    <h3
+                      className="text-base sm:text-lg font-semibold text-gray-800 
+                      group-hover:text-secondary transition-colors duration-300"
+                    >
                       {item.title}
                     </h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">
+                    <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
                       {item.description}
                     </p>
                   </div>
@@ -70,21 +79,21 @@ function Home() {
                   href={Resume}
                   download
                   className="px-3 sm:px-4 py-1.5 text-xs sm:text-sm font-medium 
-      bg-gradient-to-r from-secondary to-green-600 text-white rounded
-      shadow-sm hover:shadow-md shadow-secondary/10
-      transform hover:-translate-y-0.5 active:translate-y-0
-      transition-all duration-300"
+                      bg-gradient-to-r from-secondary to-green-600 text-white rounded
+                      shadow-sm hover:shadow-md shadow-secondary/10
+                      transform hover:-translate-y-0.5 active:translate-y-0
+                      transition-all duration-300"
                 >
                   Download CV
                 </a>
                 <a
                   href="#contact"
                   className="px-3 sm:px-4 py-1.5 text-xs sm:text-sm font-medium
-      border border-gray-200 text-gray-600 rounded
-      hover:border-secondary hover:text-secondary
-      hover:shadow-sm hover:shadow-secondary/5
-      transform hover:-translate-y-0.5 active:translate-y-0
-      transition-all duration-300 bg-white/50"
+                      border border-gray-200 text-gray-600 rounded
+                      hover:border-secondary hover:text-secondary
+                      hover:shadow-sm hover:shadow-secondary/5
+                      transform hover:-translate-y-0.5 active:translate-y-0
+                      transition-all duration-300 bg-white/50"
                 >
                   Contact
                 </a>

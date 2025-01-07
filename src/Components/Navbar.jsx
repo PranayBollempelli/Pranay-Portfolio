@@ -74,24 +74,39 @@ function Navbar() {
             ))}
           </div>
 
-          {/* Mobile Menu */}
+          {/* Mobile Menu Container */}
           <div
-            className={`lg:hidden fixed inset-0 top-20 bg-white/95 backdrop-blur-sm transform transition-transform duration-300 
-            ${isMenuOpen ? "translate-x-0" : "translate-x-full"}`}
+            className={`fixed inset-0 min-h-screen w-full transition-all duration-300 lg:hidden ${
+              isMenuOpen ? "visible" : "invisible"
+            }`}
           >
-            <div className="container mx-auto px-5 py-8">
-              <div className="flex flex-col items-center gap-6">
+            {/* Blur Background */}
+            <div
+              className={`absolute inset-0 bg-white/70 backdrop-blur-lg transition-opacity duration-300 ${
+                isMenuOpen ? "opacity-100" : "opacity-0"
+              }`}
+              style={{ zIndex: 40 }}
+            />
+
+            {/* Menu Items */}
+            <div
+              className={`relative pt-28 px-6 transition-opacity duration-300 ${
+                isMenuOpen ? "opacity-100" : "opacity-0"
+              }`}
+              style={{ zIndex: 41 }}
+            >
+              <div className="flex flex-col items-center gap-8">
                 {NavItems.map((item) => (
                   <a
                     key={item.id}
                     href={item.link}
                     onClick={() => setIsMenuOpen(false)}
                     className={`text-lg font-medium transition-colors
-                      ${
-                        activeSection === item.link.replace("#", "")
-                          ? "text-secondary"
-                          : "text-gray-600"
-                      }`}
+                  ${
+                    activeSection === item.link.replace("#", "")
+                      ? "text-secondary"
+                      : "text-gray-600"
+                  }`}
                   >
                     {item.name}
                   </a>
