@@ -1,10 +1,23 @@
 import jobbyImage from "../assets/Projects Images/Jobby.png";
 import NxtTrends from "../assets/Projects Images/Nxt Trends.png";
 import TastyKitches from "../assets/Projects Images/Tasty Kitches.png";
+import Sync from "../assets/Projects Images/sync.png";
 
 const ProjectsList = [
   {
-    id: 1,
+    name: "Sync Chat-App",
+    image: Sync,
+    description:
+      "Developed a full-stack chat application with real-time messaging using Socket.IO, secure authentication with JWT, and profile picture uploads via Cloudinary, styled with Tailwind CSS and DaisyUI for a responsive and customizable user experience.",
+    tools: [
+      "Real-Time Communication",
+      "User Authentication",
+      "Secure Application",
+    ],
+    liveUrl: "https://sync-mern-chat.onrender.com",
+    repoUrl: "https://github.com/PranayBollempelli/Sync-mern-chat",
+  },
+  {
     name: "Tasty Kitchens",
     image: TastyKitches,
     description:
@@ -14,7 +27,6 @@ const ProjectsList = [
     repoUrl: "https://github.com/PranayBollempelli/tastyKitchensApp.git",
   },
   {
-    id: 2,
     name: "Nxt Trends",
     image: NxtTrends,
     description:
@@ -24,7 +36,6 @@ const ProjectsList = [
     repoUrl: "https://github.com/PranayBollempelli/nxtTrendZ.git",
   },
   {
-    id: 3,
     name: "Jobby",
     image: jobbyImage,
     description: "Constructed an all-in-one job searching platform, Jobby App.",
